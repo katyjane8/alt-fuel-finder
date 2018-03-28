@@ -3,7 +3,6 @@ class Stations
               :distance, :access_times
 
   def initialize(attrs)
-    require "pry"; binding.pry
     @station_name = attrs[:station_name]
     @address = attrs[:street_address]
     @fuel_types = attrs[:fuel_type_code]

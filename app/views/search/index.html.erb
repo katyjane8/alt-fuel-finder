@@ -5,6 +5,7 @@
   <% @station_info.each do |station| %>
     Station Name: <p><%= station["station_name"] %></p>
     Address: <p><%= station["street_address"] %></p>
+    State: <p><%= station["state"] %></p>
     Fuel Types: <p><%= station["fuel_type_code"] %></p>
     Distance from Zipcode: <p><%= station["distance"] %></p>
     Access Times: <p><%= station["access_days_time"] %></p>
