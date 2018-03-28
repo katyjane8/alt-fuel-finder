@@ -10,7 +10,7 @@ feature "User can search on the homepage by" do
 
     expect(current_path).to eq("/search")
 
-    expect(page).to have_content("Station Result Count: 20")
+    expect(page).to have_content("Station Result Count: 10")
 
     within(first(".stations")) do
       expect(page).to have_content("UDR")
