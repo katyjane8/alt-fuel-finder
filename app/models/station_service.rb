@@ -1,5 +1,5 @@
 class StationService
-
+   
   def initialize
   end
 
@@ -10,8 +10,7 @@ class StationService
   end
 
   def stations_result
-    stations = Stations.new(attrs)
-    require "pry"; binding.pry
+    stations = Stations.new(conn)
   end
 
   def sort_stations
