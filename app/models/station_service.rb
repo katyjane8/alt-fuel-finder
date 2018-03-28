@@ -6,13 +6,19 @@ class StationService
   def conn
     response = Faraday.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV["NREL_API_KEY"]}&location=80203=&fuel_type=ELEC,LPG&limit=10")
     result = parse_json(response)
-    @stations = result["fuel_stations"]
+    stations_parsed = result["fuel_stations"]
+  end
+
+  def stations_result
+    stations = Stations.new(attrs)
+    require "pry"; binding.pry
   end
 
   def sort_stations
     sorted = conn.sort_by { |distance, miles| miles }
     sorted.reverse
   end
+
 
   private
 
