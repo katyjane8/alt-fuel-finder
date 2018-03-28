@@ -1,3 +1,12 @@
-<h1>  welcome </h1>
-<%= @stations %>
-<%= @sorted %>
+<h1> welcome to fuel finder </h1>
+<h3>Station Result Count: <%= @station_info.count %></h3>
+<div class="stations">
+  <h2>Stations Sorted by Distace</h2>
+  <% @station_info.each do |station| %>
+    Station Name: <p><%= station["station_name"] %></p>
+    Address: <p><%= station["street_address"] %></p>
+    Fuel Types: <p><%= station["fuel_type_code"] %></p>
+    Distance from Zipcode: <p><%= station["distance"] %></p>
+    Access Times: <p><%= station["access_days_time"] %></p>
+  <% end  %>
+</div>

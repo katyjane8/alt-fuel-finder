@@ -1,18 +1,17 @@
 class StationService
-  attr_reader :zipcode
 
-  def initialize(zipcode)
-    @zipcode = zipcode
+  def initialize
   end
 
   def conn
-    response = Faraday.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV["NREL_API_KEY"]}&location=#{zipcode}=&fuel_type=ELEC,LPG&limit=10")
+    response = Faraday.get("https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV["NREL_API_KEY"]}&location=80203=&fuel_type=ELEC,LPG&limit=10")
     result = parse_json(response)
     @stations = result["fuel_stations"]
   end
 
   def sort_stations
-    @stations.sort_by { |distance, miles| miles }
+    sorted = conn.sort_by { |distance, miles| miles }
+    sorted.reverse
   end
 
   private
